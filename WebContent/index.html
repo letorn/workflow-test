@@ -1,0 +1,25 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Index</title>
+<script type="text/javascript" src="public/jquery/jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+  function askForLeaveClick() {
+	  $.getJSON('leave/askforleave.do', function(data) {
+		  alert(JSON.stringify(data));
+	  });
+  }
+  
+  function approveRequestClick() {
+	  $.getJSON('leave/approverequest.do', function(data) {
+		  alert(JSON.stringify(data));
+	  });
+  }
+</script>
+</head>
+<body>
+  <h1>Index</h1>
+  <a href="javascript:askForLeaveClick()">Ask For Leave</a>&nbsp;
+  <a href="javascript:approveRequestClick()">Approve Request</a>&nbsp;
+</body>
+</html>
