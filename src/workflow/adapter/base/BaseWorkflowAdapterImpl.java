@@ -3,7 +3,6 @@ package workflow.adapter.base;
 import org.copperengine.core.Acknowledge;
 import org.copperengine.core.ProcessingEngine;
 import org.copperengine.core.Response;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * This is the default adapterImpl, all adapters should extend this
@@ -13,10 +12,13 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public abstract class BaseWorkflowAdapterImpl
 {
-    @Autowired
     protected ProcessingEngine engine;
-
     private static final Acknowledge.DefaultAcknowledge defaultAck = new Acknowledge.DefaultAcknowledge();
+
+    public void setEngine(ProcessingEngine engine)
+    {
+        this.engine = engine;
+    }
 
     /**
      * Use this utility method to send response to engine and resume workflow It will not return until engine

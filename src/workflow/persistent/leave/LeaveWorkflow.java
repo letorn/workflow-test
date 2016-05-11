@@ -14,6 +14,12 @@ import workflow.data.leave.event.WaitEventEnum;
 import workflow.definition.WorkflowDef;
 import workflow.persistent.base.BasePersistentWorkflow;
 
+/**
+ * 工作流-请假
+ * 
+ * @author weitangli
+ *
+ */
 @WorkflowDescription(alias = WorkflowDef.LEAVE_WORKFLOW, majorVersion = 1, minorVersion = 0, patchLevelVersion = 0)
 public class LeaveWorkflow extends BasePersistentWorkflow<LeaveWorkflowData>
 {

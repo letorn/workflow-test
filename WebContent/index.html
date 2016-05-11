@@ -4,22 +4,38 @@
 <title>Index</title>
 <script type="text/javascript" src="public/jquery/jquery-1.11.1.min.js"></script>
 <script type="text/javascript">
+
+  function hint(msg) {
+	  $('#hint').html($.isPlainObject(msg) ? JSON.stringify(msg) : msg);
+	  setTimeout(function() { $('#hint').html('') }, 1500);
+  }
+  
   function askForLeaveClick() {
-	  $.getJSON('leave/askforleave.do', function(data) {
-		  alert(JSON.stringify(data));
+    $.getJSON('leave/askforleave.do', function(data) {
+        hint(data);
+    });
+}
+
+  function approveRequestClick() {
+	  $.getJSON('leave/approverequest.do', function(data) {
+		  hint(data);
 	  });
   }
   
-  function approveRequestClick() {
-	  $.getJSON('leave/approverequest.do', function(data) {
-		  alert(JSON.stringify(data));
-	  });
+  function setupRemindClick() {
+    $.getJSON('remind/setupremind.do', function(data) {
+        hint(data);
+    });
   }
 </script>
 </head>
 <body>
-  <h1>Index</h1>
+  <h1>Index<span id="hint" style="font-size:14px;color:red;margin-left:25px"></span></h1>
+  <h3>Workflow</h3>
   <a href="javascript:askForLeaveClick()">Ask For Leave</a>&nbsp;
   <a href="javascript:approveRequestClick()">Approve Request</a>&nbsp;
+
+  <h3>Scheduler</h3>
+  <a href="javascript:setupRemindClick()">Setup Remind</a>&nbsp;
 </body>
 </html>

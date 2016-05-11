@@ -17,20 +17,20 @@
 
 	<profiles>
 		<profile>
-			<id>junit</id>
+			<id>development</id>
 			<properties>
-				<mysql.url>jdbc:mysql://localhost:3306/copper_dev?useUnicode=true;characterEncoding=utf8</mysql.url>
+				<mysql.url>jdbc:mysql://localhost:3306/copper_dev</mysql.url>
 				<mysql.user>root</mysql.user>
 				<mysql.pwd>123456</mysql.pwd>
 				<workflow.source.dir>${webapp.root}/WEB-INF/classes/workflow/persistent</workflow.source.dir>
 				<workflow.target.dir>${webapp.root}/WEB-INF/flowclses</workflow.target.dir>
 			</properties>
 			<activation>
-				<activeByDefault>false</activeByDefault>
+				<activeByDefault>true</activeByDefault>
 			</activation>
 		</profile>
 		<profile>
-			<id>development</id>
+			<id>junit</id>
 			<properties>
 				<mysql.url>jdbc:mysql://localhost:3306/copper_dev</mysql.url>
 				<mysql.user>root</mysql.user>
@@ -39,7 +39,7 @@
 				<workflow.target.dir>target/flowclses</workflow.target.dir>
 			</properties>
 			<activation>
-				<activeByDefault>true</activeByDefault>
+				<activeByDefault>false</activeByDefault>
 			</activation>
 		</profile>
 	</profiles>
@@ -194,5 +194,12 @@
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>1.7.19</version>
 		</dependency>
+		
+		<!-- 定时表达式 -->
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+            <version>1.8.6</version>
+        </dependency>
 	</dependencies>
 </project>

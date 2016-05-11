@@ -1,7 +1,6 @@
 package workflow.adapter.leave.impl;
 
 import org.apache.log4j.Logger;
-import org.springframework.stereotype.Service;
 
 import workflow.adapter.base.BaseWorkflowAdapterImpl;
 import workflow.adapter.leave.LeaveAdapter;
@@ -9,7 +8,6 @@ import workflow.data.leave.EventResponse;
 import workflow.data.leave.event.WaitEventEnum;
 import workflow.receiver.leave.LeaveRequestReceiver;
 
-@Service("leaveAdapter")
 public class LeaveAdapterImpl extends BaseWorkflowAdapterImpl implements LeaveAdapter, LeaveRequestReceiver
 {
     private final Logger logger = Logger.getLogger(getClass());

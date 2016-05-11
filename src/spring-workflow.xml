@@ -13,7 +13,9 @@
            http://www.springframework.org/schema/jee 
            http://www.springframework.org/schema/jee/spring-jee-3.0.xsd">
 
-	<context:component-scan base-package="workflow" />
+    <context:property-placeholder location="classpath:workflow.properties" />
+
+	<!-- <context:component-scan base-package="workflow" /> -->
 
 	<bean id="urlCompileOption" class="org.copperengine.core.wfrepo.URLClassloaderClasspathProvider" />
 
@@ -52,7 +54,8 @@
 		</property>
 	</bean>
     -->
-
+    <alias alias="dataSourceWorkflow" name="dataSource" />
+    
 	<bean id="dbDialect" class="org.copperengine.core.persistent.MySqlDialect" scope="singleton" init-method="startup">
 		<property name="wfRepository" ref="wfRepository" />
 	</bean>
@@ -65,7 +68,7 @@
 	</bean>
 
 	<bean id="txnController" class="org.copperengine.core.persistent.txn.CopperTransactionController" scope="singleton">
-		<property name="dataSource" ref="dataSource" />
+		<property name="dataSource" ref="dataSourceWorkflow" />
 	</bean>
 
 	<bean id="batcher" class="org.copperengine.core.batcher.impl.BatcherImpl" scope="singleton" init-method="startup"
@@ -117,5 +120,7 @@
 	</bean>
 
 	<bean class="org.copperengine.spring.JmxExporter" init-method="startup" destroy-method="shutdown" />
+
+    <import resource="classpath:spring-workflow-service.xml" />
 
 </beans>

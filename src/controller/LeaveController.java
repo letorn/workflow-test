@@ -32,15 +32,16 @@ public class LeaveController
     public Map<String, Object> askForLeave()
     {
         Map<String, Object> dataMap = new HashMap<String, Object>();
-        String wfName = WorkflowDef.LEAVE_WORKFLOW;
+        String workflow = WorkflowDef.LEAVE_WORKFLOW;
         LeaveWorkflowData data = new LeaveWorkflowData();
-        data.setBusinessNum("test...");
+        data.setBusinessNum("workflow-leave-num");
         try
         {
-            engine.run(wfName, data);
+            engine.run(workflow, data);
         }
         catch (Exception e)
         {
+            dataMap.put("success", false);
             e.printStackTrace();
         }
 
@@ -53,7 +54,8 @@ public class LeaveController
     public Map<String, Object> approveRequest()
     {
         Map<String, Object> dataMap = new HashMap<String, Object>();
-        String correlationId = "test...";
+
+        String correlationId = "workflow-leave-num";
         EventResponse eventResponse = new EventResponse();
         eventResponse.setCorrelationId(correlationId);
         eventResponse.setWaitEventEnum(WaitEventEnum.ASK);
